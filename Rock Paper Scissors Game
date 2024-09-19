@@ -1,0 +1,67 @@
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+num=int(input("What do you choose? 0 - rock, 1= paper, 2 =scissors\n"))
+if num==int(0):
+    print(rock)
+elif num==int(1):
+    print(paper)
+elif num==int(2):
+    print(scissors)
+else:
+    print("Input the correct value!")
+print("Computer output\n")
+import random
+num1=random.randint(0,2)
+print(num1)
+if num1==int(0):
+    print(rock)
+elif num1==int(1):
+    print(paper)
+elif num1==int(2):
+    print(scissors)
+else:
+    print("Input the correct value!")
+if num==0 and num1==1:
+    print("You loss")
+elif num==0 and num1==2:
+    print("You win")
+elif num==0 and num1==0:
+    print("Draw")
+elif num==1 and num1==2:
+    print("You loss")
+elif num==1 and num1==1:
+    print("Draw")
+elif num==1 and num1==0:
+    print("You win")
+elif num==2 and num1==0:
+    print("You loss")
+elif num==2 and num1==1:
+    print("You win")
+elif num==2 and num1==2:
+    print("Draw")
+else:
+    print("Invalid number")
