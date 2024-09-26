@@ -1,0 +1,28 @@
+def calculate_love_score(male_name,female_name):
+    x=[]
+    y=[]
+    names=male_name.lower()+female_name.lower()
+    for a in names:
+        if a=="t":
+            x+=a
+        elif a=="r":
+            x+=a
+        elif a=="u":
+            x+=a
+        elif a=="e":
+            x+=a
+    for b in names:
+        if b=="l":
+            y+=b
+        elif b=="o":
+            y+=b
+        elif b=="v":
+            y+=b
+        elif b=="e":
+            y+=b
+
+
+    print(str(len(x))+str(len(y)))
+
+
+calculate_love_score(input("Enter Male Name ?\n"),input("Enter Male Name ?\n"))
