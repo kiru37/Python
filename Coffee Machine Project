@@ -1,0 +1,151 @@
+logo="""
+.
+                        `:.
+                          `:.
+                  .:'     ,::
+                 .:'      ;:'
+                 ::      ;:'
+                  :    .:'
+                   `.  :.
+          _________________________
+         : _ _ _ _ _ _ _ _ _ _ _ _ :
+     ,---:".".".".".".".".".".".".":
+    : ,'"`::.:.:.:.:.:.:.:.:.:.:.::'
+    `.`.  `:-===-===-===-===-===-:'
+      `.`-._:                   :
+        `-.__`.               ,'    .
+    ,--------`"`-------------'--------.
+     `"--.__                   __.--"'
+            `""-------------""'
+"""
+menu = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+}
+
+profit=0
+esp_water = menu["espresso"]["ingredients"]["water"]
+esp_coffee = menu["espresso"]["ingredients"]["coffee"]
+lat_water = menu["latte"]["ingredients"]["water"]
+lat_milk = menu["latte"]["ingredients"]["water"]
+lat_coffee = menu["latte"]["ingredients"]["coffee"]
+cap_water = menu["cappuccino"]["ingredients"]["water"]
+cap_milk = menu["cappuccino"]["ingredients"]["water"]
+cap_coffee = menu["cappuccino"]["ingredients"]["coffee"]
+
+def report():
+    water=resources["water"]
+    print(f"Water : {water}")
+    milk=resources["milk"]
+    print(f"Milk : {milk}")
+    coffee=resources["coffee"]
+    print(f"Coffee : {coffee}")
+    money=profit
+    print(f"Money : {money}")
+
+esp_cost = menu["espresso"]["cost"]
+lat_cost = menu["latte"]["cost"]
+cap_cost = menu["cappuccino"]["cost"]
+
+def transactions(amount):
+    print("Please insert the coins.")
+    q_count = int(input("No of Quarter coins ($ 0.25) : "))
+    d_count = int(input("No of Dimes coins ($ 0.10) : "))
+    n_count = int(input("No of Nickel coins ($ 0.05) : "))
+    p_count = int(input("No of Penny coins ($ 0.01) : "))
+    total = (q_count * 0.25) + (d_count * 0.10) + (n_count * 0.05) + (p_count * 0.01)
+    if ask=="espresso":
+        if total>esp_cost:
+            balance=total-esp_cost
+            amount+=esp_cost
+            print(f"Balance {round(balance,2)} will be refunded")
+            return True
+        else:
+            print("Sorry! Invalid balance")
+            return False
+    if ask=="latte":
+        if total>lat_cost:
+            balance=total-lat_cost
+            amount+=lat_cost
+            print(f"Balance {round(balance,2)} will be refunded")
+            return True
+        else:
+            print("Sorry! Invalid balance")
+            return False
+    if ask=="cappuccino":
+        if total>cap_cost:
+            balance=total-cap_cost
+            amount+=cap_cost
+            print(f"Balance {round(balance,2)} will be refunded")
+            return True
+        else:
+            print("Sorry! Invalid balance")
+            return False
+
+
+on=True
+while on:
+    print(logo)
+    ask = input("What would you like? (espresso/latte/cappuccino): ")
+    if ask=="espresso":
+        if resources["water"]>=esp_water and resources["coffee"]>=esp_coffee:
+            if transactions(profit)==True:
+                resources["water"]-=esp_water
+                resources["coffee"]-=esp_coffee
+                profit+=esp_cost
+                print(f"Enjoy your {ask}☕")
+        else:
+            print("There is no sufficient resources")
+    elif ask=="latte":
+        if resources["water"]>=lat_water and resources["milk"]>=lat_milk and resources["coffee"]>=lat_coffee:
+            if transactions(profit)==True:
+                resources["water"]-=lat_water
+                resources["milk"]-=lat_milk
+                resources["coffee"]-=lat_coffee
+                profit+=lat_cost
+                print(f"Enjoy your {ask}☕")
+        else:
+            print("There is no sufficient resources")
+    elif ask=="cappuccino":
+        if resources["water"] >= cap_water and resources["milk"] >= cap_milk and resources["coffee"] >= cap_coffee:
+            if transactions(profit)==True:
+                resources["water"] -= cap_water
+                resources["milk"] -= cap_milk
+                resources["coffee"] -= cap_coffee
+                profit += lat_cost
+                print(f"Enjoy your {ask}☕")
+        else:
+            print("There is no sufficient resources")
+    elif ask== "report":
+        report()
+    elif ask=="off":
+        on=False
+    else:
+        print("Your input is not valid")
