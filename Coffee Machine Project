@@ -45,9 +45,9 @@ menu = {
 }
 
 resources = {
-    "water": 300,
-    "milk": 200,
-    "coffee": 100,
+    "water": 500,
+    "milk": 300,
+    "coffee": 150,
 }
 
 profit=0
@@ -111,8 +111,8 @@ def transactions(amount):
 
 
 on=True
+print(logo)
 while on:
-    print(logo)
     ask = input("What would you like? (espresso/latte/cappuccino): ")
     if ask=="espresso":
         if resources["water"]>=esp_water and resources["coffee"]>=esp_coffee:
@@ -139,7 +139,7 @@ while on:
                 resources["water"] -= cap_water
                 resources["milk"] -= cap_milk
                 resources["coffee"] -= cap_coffee
-                profit += lat_cost
+                profit += cap_cost
                 print(f"Enjoy your {ask}☕")
         else:
             print("There is no sufficient resources")
