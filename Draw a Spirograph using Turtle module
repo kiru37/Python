@@ -1,0 +1,25 @@
+import random
+from turtle import Turtle,Screen,colormode
+turtle = Turtle()
+color_mode=colormode(255)
+
+def random_color():
+    r=random.randint(0,255)
+    g=random.randint(0,255)
+    b=random.randint(0,255)
+    randomcolor=(r,g,b)
+    return randomcolor
+
+def draw_spirograph(size):
+    for a in range(int(360/size)):
+        turtle.pensize(1)
+        turtle.color(random_color())
+        turtle.speed("fastest")
+        current_heading=turtle.heading()
+        turtle.setheading(current_heading+size)
+        turtle.circle(100)
+
+draw_spirograph(5)
+
+my_screen=Screen()
+my_screen.exitonclick()
