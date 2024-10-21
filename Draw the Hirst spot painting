@@ -1,0 +1,45 @@
+import random
+import turtle
+from turtle import Turtle, Screen, colormode
+
+colormode(255)
+
+colors = [
+    (220, 149, 107), (140, 119, 8), (73, 127, 125),
+    (14, 122, 175), (56, 10, 10), (78, 40, 65),
+    (185, 90, 156), (56, 165, 55), (226, 152, 223),
+    (119, 8, 14), (4, 86, 120)
+]
+
+# Create turtle instance
+my_turtle = Turtle()
+my_turtle.penup()
+my_turtle.hideturtle()
+
+# Position the turtle
+my_turtle.setheading(225)
+my_turtle.forward(250)
+my_turtle.setheading(0)
+
+def draw():
+    for _ in range(10):  # Change to 10 dots in a row
+        my_turtle.speed("fast")
+        my_turtle.dot(20, random.choice(colors))
+        my_turtle.forward(50)
+
+def next_row():
+    my_turtle.speed("fastest")
+    my_turtle.left(90)
+    my_turtle.forward(50)
+    my_turtle.left(90)
+    my_turtle.forward(500)  # Move down to the next row
+    my_turtle.setheading(0)  # Face right again
+
+# Draw the grid
+for _ in range(10):  # 10 rows
+    draw()
+    next_row()
+
+# Exit on click
+my_screen = Screen()
+my_screen.exitonclick()
