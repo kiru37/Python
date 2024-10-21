@@ -1,7 +1,6 @@
 from colorgram import *
 # Import the image that needs to be in the same indentation as main.py
 color=colorgram.extract('Hirst.jpg',15) #image name and num of colors needed
-num=15
 my_color_list=[]
 for a in range(15):
     r=color[a].rgb[0]
