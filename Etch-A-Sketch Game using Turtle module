@@ -1,0 +1,30 @@
+from turtle import Turtle, Screen
+t=Turtle()
+s=Screen()
+
+def forward():
+    t.forward(15)
+
+def backward():
+    t.backward(15)
+
+def clear():
+    t.penup()
+    t.clear()
+    t.home()
+
+def clockwise():
+    current_heading = t.heading()
+    t.setheading(current_heading +10)
+
+def anti_clockwise():
+    current_heading = t.heading()
+    t.setheading(current_heading -10)
+
+s.listen()
+s.onkey(key="w",fun=forward)
+s.onkey(key="s",fun=backward)
+s.onkey(key="c",fun=clear)
+s.onkey(key="d",fun=clockwise)
+s.onkey(key="a",fun=anti_clockwise)
+s.exitonclick()
