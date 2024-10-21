@@ -12,6 +12,7 @@ def clear():
     t.penup()
     t.clear()
     t.home()
+    t.pendown()
 
 def clockwise():
     current_heading = t.heading()
