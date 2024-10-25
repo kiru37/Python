@@ -1,0 +1,36 @@
+from turtle import Turtle, Screen
+import random
+distance=random.randint(0,10)
+is_race_on=False
+rainbow_color=["red","orange","yellow","green","blue","indigo","violet"]
+s=Screen()
+s.setup(width=500,height=400)
+user_input=s.textinput(title="Turtle race",prompt=f"Which turtle will win the race? Pick the color: {tuple(rainbow_color)}\n")
+c=int(-230)
+d=[-100,-60,-20,20,60,100,140]
+all_turtle=[]
+for a in range(0,len(rainbow_color)):
+    t=Turtle(shape="turtle")
+    t.color(rainbow_color[a])
+    t.penup()
+    t.goto(x=c,y=d[a])
+    all_turtle.append(t)
+
+if user_input in rainbow_color:
+    is_race_on=True
+else:
+    print("Input the correct color!")
+
+while is_race_on:
+    for turtle in all_turtle:
+        if turtle.xcor()>230:
+            win=turtle.color()[0]
+            if user_input==win:
+                print("You win!")
+            else:
+                print("You lose!")
+            print(f"{win} color turtle wins!")
+            is_race_on=False
+        turtle.forward(random.randint(0,10))
+
+s.exitonclick()
