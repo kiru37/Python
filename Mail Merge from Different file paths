@@ -1,0 +1,34 @@
+Input/Letters/Starting letter:
+Dear [name],
+
+You are invited to my birthday this Saturday.
+
+Hope you can make it!
+Kiru
+
+
+Input/Names/Invited_names:
+Aang
+Zuko
+Appa
+Katara
+Sokka
+Momo
+Uncle Iroh
+Toph
+
+
+********** main.py **********
+names=[]
+for name in open('./Input/Names/Invited_names.txt','r'):
+    names.append(name.strip())
+
+count=len(names)
+placeholder="[name]"
+for a in range(count):
+    a-=1
+    with open('./Input/Letters/starting_letter.txt','r') as letter_content:
+        letter_body=letter_content.read()
+        new_letter=letter_body.replace(placeholder,names[a])
+    with open(f'./Output/ReadyToSend/mail_to_{names[a]}.txt','w') as ready:
+        ready.write(new_letter)
